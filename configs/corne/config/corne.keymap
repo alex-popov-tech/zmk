@@ -2,6 +2,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+
 
 #define TIMEOUT 120
 
@@ -24,6 +26,11 @@
   behaviors {
     #include "modmorph.dtsi"
     #include "modtap.dtsi"
+    chosen {
+      zmk,battery = &vbatt;
+      compatible = "zmk,battery-nrf-vddh";
+    };
+
   };
   combos {
     #include "combos.dtsi"
@@ -41,7 +48,7 @@
 // ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤  ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
       &kp F11     &kp N       &kp S       &kp T       &kp R       &kp L          &kp Y       &kp A       &kp E       &kp O       &kp I       &kp F12
 // ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤  ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-      &none       &kp X       &kp F       &kp G       &kp H       &kp Z          &kp SLASH   &kp P     &mm_dot_col   &kp J     &mm_comma_semi &none
+&ext_power EP_OFF &kp X       &kp F       &kp G       &kp H       &kp Z          &kp SLASH   &kp P     &mm_dot_col   &kp J     &mm_comma_semi &none
 // ╰───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤  ├───────────┼───────────┼───────────┼───────────┴───────────┴───────────╯
                                           &kp ESC     &kp SPC     &mo SYM        &kp BSPC    &kp LSHIFT  &kp RET
 //                                     ╰───────────┴───────────┴───────────╯  ╰───────────┴───────────┴───────────╯
@@ -71,7 +78,7 @@
 // ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤  ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
       &trans      &trans      &trans      &trans      &kp N5      &kp TAB        &kp TAB     &kp N6      &trans      &trans      &trans      &trans
 // ╰───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤  ├───────────┼───────────┼───────────┼───────────┴───────────┴───────────╯
-                                          &mo BT      &trans      &trans         &trans      &trans      &trans
+                                          &mo PREF    &trans      &trans         &mo PREF    &trans      &trans
 //                                     ╰───────────┴───────────┴───────────╯  ╰───────────┴───────────┴───────────╯
                            >;
               };
